@@ -4,7 +4,6 @@ import Link from "next/link";
 
 const Header = () => {
   const session = useSession();
-  console.log(session);
   const status = session.status;
   const userName = session?.data?.user?.name
 

@@ -5,7 +5,7 @@ const Input = ({ type,className, name, label, value, onChange, placeholder, disa
       <input
         name={name}
         disabled={disabled}
-        className={className}
+        className={`focus:outline-none focus:border-blue-500 ${className}`}
         type={type}
         value={value}
         onChange={onChange}

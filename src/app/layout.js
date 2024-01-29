@@ -2,6 +2,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/header";
 import AppContext from "@/components/AppContext";
+import { NotificationProvider } from "@/components/sheared/Notificition";
 const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export const metadata = {
@@ -15,11 +16,13 @@ export default function RootLayout({ children }) {
       <body className={roboto.className}>
         <main className="max-w-4xl mx-auto p-5">
           <AppContext>
+            <NotificationProvider >
             <Header />
             {children}
             <footer className=" border-t p-8 text-center text-gray-500 mt-16">
               &copy; 2023 All right reserve
             </footer>
+            </NotificationProvider>
           </AppContext>
         </main>
       </body>
