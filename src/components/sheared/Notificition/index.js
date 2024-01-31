@@ -14,7 +14,7 @@ const ToastVariantSuccess = ({ title, message }) => {
 const ToastVariantError = ({ title, message }) => {
   return (
     <div className=" bg-gray-900 p-1">
-      <p className="font-medium text-white">{title}</p>
+      <p className="font-medium text-white px-2">{title}</p>
       <p className="mt-1 text-gray-500">{message}</p>
     </div>
   );

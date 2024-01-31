@@ -1,12 +1,20 @@
+"use client";
 import UserTabs from "@/components/UserTabs";
+import useProfile from "@/components/customHook/use-profile";
 
-const Users = () => {
+export default function UsersPage() {
+  const { isLoading, data } = useProfile();
+
+  if (isLoading) {
+    return "Loading user info...";
+  }
+  if (!data.admin) {
+    return "Not an admin.";
+  }
+
   return (
-    <>
+    <section className="mt-8">
       <UserTabs isAdmin={true} />
-      <div className="mt-8 flex flex-row w-2/4 mx-auto gap-4">Users</div>
-    </>
+    </section>
   );
-};
-
-export default Users;
+}

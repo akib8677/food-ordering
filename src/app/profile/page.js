@@ -92,7 +92,7 @@ const ProfilePage = () => {
   return (
     <div className="">
       <UserTabs isAdmin={isAdmin} />
-      <div className="flex flex-row w-2/4 mx-auto mt-8  gap-4">
+      <div className="flex flex-row max-w-2xl justify-center mx-auto mt-8  gap-4">
         <div>
           <Image
             src={imageUrl || profileImage}

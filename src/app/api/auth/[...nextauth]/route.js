@@ -36,18 +36,12 @@ export const authOption = {
 
       async authorize(credentials, req) {
         const { email, password } = credentials;
-        console.log("email", email);
         mongoose.connect(process.env.MONGO_URL);
         const user = await User.findOne({ email });
         const comparePass = user && bcrypt.hashSync(password, user.password);
-        console.log("user", user);
-        console.log("comparePass", comparePass);
-        console.log("credentials", credentials);
         if (comparePass) {
-          console.log("user", user);
           return user;
         }
-
         return null;
       },
     }),
