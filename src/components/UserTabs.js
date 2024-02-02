@@ -35,7 +35,7 @@ const UserTabs = ({ isAdmin }) => {
           </Link>
           <Link
             className={`rounded-full px-4 py-2 ${
-              path === "/users" ? "bg-primary text-white" : "bg-gray-300 text-gray-700"
+              path.includes("/users" ) ? "bg-primary text-white" : "bg-gray-300 text-gray-700"
             }`}
             href={"/users"}
           >
