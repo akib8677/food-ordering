@@ -7,6 +7,7 @@ import Button from "@/components/sheared/button";
 import useProfile from "@/components/customHook/use-profile";
 
 const UserProfileFrom = ({ users, onSave, onChange }) => {
+  console.log('users', users)
   const session = useSession();
   const imageUrl = session?.data?.user?.image;
   const [userName, setUserName] = useState(users?.name || "");
@@ -22,7 +23,7 @@ const UserProfileFrom = ({ users, onSave, onChange }) => {
     <div className="flex flex-row max-w-2xl justify-center mx-auto mt-8  gap-4">
       <div>
         <Image
-          src={imageUrl || profileImage}
+          src={imageUrl}
           className="rounded-lg mb-1"
           width={100}
           height={100}
@@ -62,7 +63,7 @@ const UserProfileFrom = ({ users, onSave, onChange }) => {
           name="email"
           className="border mb-1 text-gray-400 p-2 w-full rounded-lg bg-gray-200"
           type="email"
-          value={users.email}
+          value={users?.email}
           disabled={true}
           placeholder="Email"
         />

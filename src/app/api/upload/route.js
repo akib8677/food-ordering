@@ -1,7 +1,8 @@
-export async function POST(req) {
-    const data = await req.formData()
-    if(data.get('file')){
-        console.log('we have a data' , data.get('file'))
-    }
-    return Response.json(true)
-}
+
+
+// export async function POST(req) {
+//     const data = await req.formData()
+//     const response = await data.get('file')  
+//     console.log('response',response)
+//     return Response.json(true)
+// }

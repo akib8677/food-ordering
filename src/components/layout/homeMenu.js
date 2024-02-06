@@ -6,7 +6,7 @@ const HomeMenu = () => {
   return (
     <>
       <div>
-        <SectionHeader subHeader="CHECK OUT" mainHeader="Menu"/>
+        <SectionHeader subHeader="CHECK OUT" mainHeader="Our Best Seller"/>
       </div>
       <div className="grid grid-cols-3 gap-4 mt-4">
         <MenuItem />

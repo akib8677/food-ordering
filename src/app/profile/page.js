@@ -4,10 +4,9 @@ import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
 import { useNotificationContext } from "@/components/sheared/Notificition";
-const profileImage = "./profileImage.png";
 import UserTabs from "@/components/UserTabs";
 import UserProfileFrom from "@/components/sheared/Form/UserProfileFrom";
-
+import UploadImage from "@/components/sheared/UploadImage";
 
 const ProfilePage = () => {
   const session = useSession();
@@ -50,20 +49,23 @@ const ProfilePage = () => {
     // }
   };
 
-  const handleFileChange = async (e) => {
-    const files = e.target.files;
-    if (files.length > 0) {
-      const data = new FormData();
-      data.set("file", files[0]);
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: data,
-        // headers: { "Content-Type": "multipart/form-data" },
-      });
-    }
-  };
+  // const handleFileChange = async (e) => {
+  //   const files = e.target.files;
+  //   if (files.length > 0) {
+  //     const data = new FormData();
+  //     data.set("file", files[0]);
+  //     // const data = await req.formData()
+  //     const response = await data.get("file");
+  //     const imageurl = await UploadImage(response)
+  //     //   const response = await fetch("/api/upload", {
+  //     //     method: "POST",
+  //     //     body: data,
+  //     //     // headers: { "Content-Type": "multipart/form-data" },
+  //     //   });
+  //   }
+  // };
 
-  if (session.status === "loading" || !profileFeched) {
+  if (session.status === "loading") {
     return <span className="text-center">Loading...</span>;
   }
 
@@ -74,7 +76,11 @@ const ProfilePage = () => {
   return (
     <div className="">
       <UserTabs isAdmin={isAdmin} />
-      <UserProfileFrom users={users} onSave={updateUserName} onChange={handleFileChange}/>
+      <UserProfileFrom
+        users={users}
+        onSave={updateUserName}
+        onChange={null}
+      />
     </div>
   );
 };
