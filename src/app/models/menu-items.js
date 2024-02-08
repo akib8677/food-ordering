@@ -8,14 +8,14 @@ const ExtraPricesSchema = new Schema({
 const MenuItemsSchema = new Schema(
   {
     name: { type: String, required: true },
+    imageUrl: { type: String, required: true },
     description: { type: String, required: true },
     basePrice: { type: String, required: true },
-    category: {type: mongoose.Types.ObjectId},
-    sizes: {type:[ExtraPricesSchema]},
-    extraIngredientPrices: {type:[ExtraPricesSchema]},
+    category: { type: mongoose.Types.ObjectId },
+    sizes: { type: [ExtraPricesSchema] },
+    extraIngredientPrices: { type: [ExtraPricesSchema] },
   },
   { timestamps: true }
 );
 
-export const MenuItems =
-  models?.MenuItems || model("MenuItems", MenuItemsSchema);
+export const MenuItems = models?.MenuItems || model("MenuItems", MenuItemsSchema);

@@ -4,7 +4,6 @@ import useProfile from "@/components/customHook/use-profile";
 import MenuItemForm from "@/components/sheared/Form/MenuItem";
 import ConfirmationDeleteButton from "@/components/sheared/ConfirmationDeleteButton";
 import toast from "react-hot-toast";
-import { useNotificationContext } from "@/components/sheared/Notificition";
 import { useState, useEffect } from "react";
 import { FcLeft } from "react-icons/fc";
 import Link from "next/link";
@@ -13,7 +12,6 @@ import { useParams, useRouter } from "next/navigation";
 export default function UpdateMenuItemsPage() {
   const { id } = useParams();
   const { isLoading, data } = useProfile();
-  const notifier = useNotificationContext();
   const [menuItem, setMenuItems] = useState({});
   const router = useRouter();
 
@@ -32,10 +30,6 @@ export default function UpdateMenuItemsPage() {
   if (!data.admin) {
     return "Not an admin.";
   }
-
-  const handleFileChange = async (e) => {
-    notifier.notify({ title: "inprogress..." });
-  };
 
   const handleMenuItems = async (e, data) => {
     e.preventDefault();
@@ -93,7 +87,6 @@ export default function UpdateMenuItemsPage() {
       </div>
       <MenuItemForm
         onSubmit={handleMenuItems}
-        onChange={handleFileChange}
         menuItem={menuItem}
       />
       <div className="mt-2 w-[432px] mx-auto flex justify-end items-end">

@@ -6,26 +6,24 @@ import toast from "react-hot-toast";
 import { useNotificationContext } from "@/components/sheared/Notificition";
 import UserTabs from "@/components/UserTabs";
 import UserProfileFrom from "@/components/sheared/Form/UserProfileFrom";
-import UploadImage from "@/components/sheared/UploadImage";
 
 const ProfilePage = () => {
   const session = useSession();
-  const imageUrl = session?.data?.user?.image;
-  const email = session?.data?.user?.email;
   const [users, setUsers] = useState(null);
   const notifier = useNotificationContext();
   const [isAdmin, setIsAdmin] = useState(false);
   const [profileFeched, setProfileFeched] = useState(false);
 
   useEffect(() => {
-    fetch("/api/profile").then((res) => {
-      res.json().then((data) => {
-        setUsers(data);
-        setIsAdmin(data.admin);
-        setProfileFeched(true);
-      });
-    });
-  }, [session]);
+    getUserProfileData()
+  },[])
+
+  const getUserProfileData = async () => {
+    const response = await fetch('api/profile')
+    const data = await response.json()
+    setUsers(data)
+    setIsAdmin(data.admin)
+  }
 
   const updateUserName = async (e, data) => {
     e.preventDefault();
@@ -49,22 +47,6 @@ const ProfilePage = () => {
     // }
   };
 
-  // const handleFileChange = async (e) => {
-  //   const files = e.target.files;
-  //   if (files.length > 0) {
-  //     const data = new FormData();
-  //     data.set("file", files[0]);
-  //     // const data = await req.formData()
-  //     const response = await data.get("file");
-  //     const imageurl = await UploadImage(response)
-  //     //   const response = await fetch("/api/upload", {
-  //     //     method: "POST",
-  //     //     body: data,
-  //     //     // headers: { "Content-Type": "multipart/form-data" },
-  //     //   });
-  //   }
-  // };
-
   if (session.status === "loading") {
     return <span className="text-center">Loading...</span>;
   }
@@ -79,7 +61,6 @@ const ProfilePage = () => {
       <UserProfileFrom
         users={users}
         onSave={updateUserName}
-        onChange={null}
       />
     </div>
   );

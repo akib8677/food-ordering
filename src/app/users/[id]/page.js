@@ -48,7 +48,7 @@ const UsersEditPage = () => {
     <section className="flex flex-col max-w-2xl justify-center mx-auto mt-8">
       <UserTabs isAdmin={data.admin} />
       <>
-        <UserProfileFrom users={users} onSave={handleSaveButtonClick} onChange={null} />
+        <UserProfileFrom users={users} onSave={handleSaveButtonClick} />
       </>
     </section>
   );

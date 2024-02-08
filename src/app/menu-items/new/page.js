@@ -6,11 +6,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import MenuItemForm from "@/components/sheared/Form/MenuItem";
 import toast from "react-hot-toast";
-import { useNotificationContext } from "@/components/sheared/Notificition";
 
 export default function NewMenuItemsPage() {
   const { isLoading, data } = useProfile();
-  const notifier = useNotificationContext();
   const router = useRouter()
 
   if (isLoading) {
@@ -39,10 +37,6 @@ export default function NewMenuItemsPage() {
     router.push("/menu-items")
   };
 
-  const handleFileChange = async (e) => {
-    notifier.notify({ title: "inprogress..." });
-  };
-
 
   return (
     <div className="">
@@ -58,7 +52,7 @@ export default function NewMenuItemsPage() {
           Go Back
         </Link>
       </div>
-      <MenuItemForm onSubmit={handleMenuItems} onChange={handleFileChange} menuItem={null}/>
+      <MenuItemForm onSubmit={handleMenuItems} menuItem={null}/>
     </div>
   );
 }

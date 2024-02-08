@@ -1,10 +1,12 @@
+import FileUpload from "../FileUpload";
 import MenuItemPriceProps from "../MenuItemPriceProps";
 import Button from "../button";
 import Input from "../input";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-const MenuItemForm = ({ onSubmit, onChange, menuItem }) => {
+const MenuItemForm = ({ onSubmit, menuItem }) => {
+  const [imageUrl, setImageUrl] = useState(menuItem?.imageUrl || '');
   const [name, setName] = useState(menuItem?.name || "");
   const [description, setDescription] = useState(menuItem?.description || "");
   const [basePrice, setBasePrice] = useState(menuItem?.basePrice || "");
@@ -26,20 +28,15 @@ const MenuItemForm = ({ onSubmit, onChange, menuItem }) => {
       });
     });
   };
+
+  const handleFileChange = (url) => {
+    setImageUrl(url)
+  }
+
   return (
     <div className="flex flex-row max-w-2xl justify-center mx-auto mt-8  gap-4">
       <div className="mt-2">
-        <Image
-          src={""}
-          className="rounded-lg bg-gray-200 mb-1"
-          width={100}
-          height={100}
-          alt="Item Image"
-        />
-        <label className="text-center block cursor-pointer font-semibold border w-full p-2 rounded-lg">
-          <input type="file" className="hidden" onChange={onChange} />
-          <span>Edit</span>
-        </label>
+        <FileUpload image={imageUrl} onFileChange={handleFileChange}/>
       </div>
       <form
         className="w-full"
@@ -50,6 +47,7 @@ const MenuItemForm = ({ onSubmit, onChange, menuItem }) => {
             basePrice,
             sizes,
             extraIngredientPrices,
+            imageUrl
           })
         }
       >

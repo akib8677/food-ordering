@@ -55,7 +55,7 @@ export default function MenuItemsPage() {
                   className="w-full shadow-md gap-1 rounded-lg cursor-pointer mb-1 p-2 px-4"
                 >
                   <Image
-                    src="/pizza2.jpg"
+                    src={c.imageUrl}
                     className="mx-auto block"
                     alt="Pizza"
                     width={150}
