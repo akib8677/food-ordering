@@ -12,16 +12,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={roboto.className}>
         <main className="max-w-4xl mx-auto p-5">
           <AppContext>
-            <NotificationProvider >
-            <Header />
-            {children}
-            <footer className=" border-t p-8 text-center text-gray-500 mt-16">
-              &copy; 2023 All right reserve
-            </footer>
+            <NotificationProvider>
+              <Header />
+              {children}
+              <footer className=" border-t p-8 text-center text-gray-500 mt-16">
+                &copy; 2023 All right reserve
+              </footer>
             </NotificationProvider>
           </AppContext>
         </main>

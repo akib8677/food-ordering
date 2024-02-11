@@ -9,8 +9,8 @@ const MenuItemForm = ({ onSubmit, menuItem }) => {
   const [imageUrl, setImageUrl] = useState(menuItem?.imageUrl || '');
   const [name, setName] = useState(menuItem?.name || "");
   const [description, setDescription] = useState(menuItem?.description || "");
-  const [basePrice, setBasePrice] = useState(menuItem?.basePrice || "");
-  const [category, setCatgory] = useState(menuItem?.category || "");
+  const [basePrice, setBasePrice] = useState(menuItem?.basePrice || 0);
+  const [category, setCategory] = useState(menuItem?.category || "");
   const [sizes, setSizes] = useState(menuItem?.sizes || []);
   const [extraIngredientPrices, setExtraIngredientPrices] = useState(
     menuItem?.extraIngredientPrices || []
@@ -44,10 +44,11 @@ const MenuItemForm = ({ onSubmit, menuItem }) => {
           onSubmit(e, {
             name,
             description,
+            category,
             basePrice,
             sizes,
             extraIngredientPrices,
-            imageUrl
+            imageUrl,
           })
         }
       >
@@ -70,7 +71,7 @@ const MenuItemForm = ({ onSubmit, menuItem }) => {
         <label className="font-medium text-gray-600 mb-2 ">Category</label>
         <select
           value={category}
-          onChange={(e) => setCatgory(e.target.value)}
+          onChange={(e) => setCategory(e.target.value)}
           className="border w-full mb-1 bg-gray-100 rounded-lg p-2"
         >
           {categories &&

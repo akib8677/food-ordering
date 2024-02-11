@@ -1,11 +1,14 @@
 "use client";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { CartContext } from "../AppContext";
+import { useContext } from 'react';
 
 const Header = () => {
+  const { cartProducts } = useContext(CartContext);
   const session = useSession();
   const status = session.status;
-  const userName = session?.data?.user?.name
+  const userName = session?.data?.user?.name;
 
   return (
     <header className="flex items-center justify-between">
@@ -15,14 +18,16 @@ const Header = () => {
         </Link>
 
         <Link href="/">Home</Link>
-        <Link href="">Menu</Link>
-        <Link href="">About</Link>
-        <Link href="">Contact</Link>
+        <Link href="/menu">Menu</Link>
+        <Link href="/#about">About</Link>
+        <Link href="/#contact">Contact</Link>
       </nav>
       <nav className="flex items-center gap-8">
         {status === "authenticated" && (
           <>
-            <Link href="/profile" className="font-bold text-gray-500">Hello, {userName.split(' ')[0]}</Link>
+            <Link href="/profile" className="font-bold text-gray-500">
+              Hello, {userName.split(" ")[0]}
+            </Link>
             <button
               className="bg-primary text-white border py-2 px-8 rounded-full"
               onClick={() => signOut()}
@@ -42,6 +47,7 @@ const Header = () => {
             </Link>
           </>
         )}
+        <Link href={'/cart'}>Cart({cartProducts.length})</Link>
       </nav>
     </header>
   );

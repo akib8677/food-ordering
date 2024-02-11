@@ -89,10 +89,10 @@ export default function UpdateMenuItemsPage() {
         onSubmit={handleMenuItems}
         menuItem={menuItem}
       />
-      <div className="mt-2 w-[432px] mx-auto flex justify-end items-end">
+      <div className="max-w-2xl mx-auto flex justify-end mt-2">
         <ConfirmationDeleteButton
           onDelete={() => handleDeleteCategory(menuItem._id)}
-          className="text-center border w-[312px] p-2 rounded-md"
+          className="text-center border w-[571px] p-2 rounded-md"
           label="Delete"
         />
       </div>

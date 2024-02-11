@@ -23,7 +23,7 @@ const HomeMenu = () => {
       </div>
       <div className="grid grid-cols-3 gap-4 mt-4">
         {menuItems.length > 0 &&
-          menuItems.map((item, index) => {
+          menuItems.slice(2, 5).map((item, index) => {
             return (
               <div key={index}>
                 <MenuItem item={item} />
