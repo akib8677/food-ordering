@@ -7,6 +7,7 @@ import Button from "@/components/sheared/button";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import ConfirmationDeleteButton from "@/components/sheared/ConfirmationDeleteButton";
+import Loader from "@/components/sheared/Loader";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -70,7 +71,7 @@ const Categories = () => {
   };
 
   if (profileLoading) {
-    return "Loading User Info....";
+    return <Loader />;
   }
 
   if (!profileData.admin) {

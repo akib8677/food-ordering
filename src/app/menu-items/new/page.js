@@ -6,13 +6,14 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import MenuItemForm from "@/components/sheared/Form/MenuItem";
 import toast from "react-hot-toast";
+import Loader from "@/components/sheared/Loader";
 
 export default function NewMenuItemsPage() {
   const { isLoading, data } = useProfile();
   const router = useRouter()
 
   if (isLoading) {
-    return "Loading user info...";
+    return <Loader />;
   }
   if (!data.admin) {
     return "Not an admin.";

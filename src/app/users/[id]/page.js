@@ -5,6 +5,7 @@ import useProfile from "@/components/customHook/use-profile";
 import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
+import Loader from "@/components/sheared/Loader";
 
 const UsersEditPage = () => {
   const { id } = useParams();
@@ -39,7 +40,7 @@ const UsersEditPage = () => {
   }
 
   if (isLoading) {
-    return "Loading user info...";
+    return <Loader />;
   }
   if (!data.admin) {
     return "Not an admin.";

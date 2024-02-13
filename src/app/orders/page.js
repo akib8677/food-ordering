@@ -1,12 +1,13 @@
 "use client";
 import useProfile from "@/components/customHook/use-profile";
+import Loader from "@/components/sheared/Loader";
 import UserTabs from "@/components/UserTabs";
 
 const OrderPage = () => {
   const { isLoading, data } = useProfile();
 
   if (isLoading) {
-    return "Loading user info...";
+    return <Loader />;
   }
   if (!data.admin) {
     return "Not an admin.";

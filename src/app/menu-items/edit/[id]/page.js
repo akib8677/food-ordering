@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { FcLeft } from "react-icons/fc";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
+import Loader from "@/components/sheared/Loader";
 
 export default function UpdateMenuItemsPage() {
   const { id } = useParams();
@@ -25,7 +26,7 @@ export default function UpdateMenuItemsPage() {
   }, [id]);
 
   if (isLoading) {
-    return "Loading user info...";
+    return <Loader />;
   }
   if (!data.admin) {
     return "Not an admin.";

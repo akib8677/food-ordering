@@ -1,6 +1,7 @@
 "use client";
 import UserTabs from "@/components/UserTabs";
 import useProfile from "@/components/customHook/use-profile";
+import Loader from "@/components/sheared/Loader";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -17,7 +18,7 @@ export default function UsersPage() {
   }, []);
 
   if (isLoading) {
-    return "Loading user info...";
+    return <Loader />;
   }
   if (!data.admin) {
     return "Not an admin.";

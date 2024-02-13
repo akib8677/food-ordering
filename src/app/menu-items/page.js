@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { FcRight } from "react-icons/fc";
 import Image from "next/image";
+import Loader from "@/components/sheared/Loader";
 
 export default function MenuItemsPage() {
   const { isLoading, data } = useProfile();
@@ -23,7 +24,7 @@ export default function MenuItemsPage() {
   };
 
   if (isLoading) {
-    return "Loading user info...";
+    return <Loader />;
   }
   if (!data.admin) {
     return "Not an admin.";

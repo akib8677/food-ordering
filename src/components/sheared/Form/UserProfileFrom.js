@@ -49,7 +49,7 @@ const UserProfileFrom = ({ users, onSave }) => {
               name="userName"
               className="border p-2 mb-1 w-full rounded-lg bg-gray-100"
               type="text"
-              value={users?.name}
+              value={userName}
               onChange={(e) => setUserName(e.target.value)}
               placeholder="First name and Last name"
             />
@@ -68,7 +68,7 @@ const UserProfileFrom = ({ users, onSave }) => {
             <Input
               className="border mb-1 text-gray-400 p-2 w-full rounded-lg bg-gray-100"
               type="tel"
-              value={users?.phone}
+              value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Phone Number"
             />
@@ -78,7 +78,7 @@ const UserProfileFrom = ({ users, onSave }) => {
             <Input
               className="border mb-1 text-gray-400 p-2 w-full rounded-lg bg-gray-100"
               type="text"
-              value={users?.streatAdress}
+              value={streatAdress}
               onChange={(e) => setStreatAdress(e.target.value)}
               placeholder="Streat Adress"
             />
@@ -90,7 +90,7 @@ const UserProfileFrom = ({ users, onSave }) => {
                 <Input
                   className="border mb-1 text-gray-400 p-2 w-full rounded-lg bg-gray-100"
                   type="number"
-                  value={users?.postalCode}
+                  value={postalCode}
                   onChange={(e) => setPostalCode(e.target.value)}
                   placeholder="Postal Code"
                 />
@@ -100,7 +100,7 @@ const UserProfileFrom = ({ users, onSave }) => {
                 <Input
                   className="border mb-1 text-gray-400 p-2 w-full rounded-lg bg-gray-100"
                   type="text"
-                  value={users?.city}
+                  value={city}
                   onChange={(e) => setCity(e.target.value)}
                   placeholder="City"
                 />
@@ -110,7 +110,7 @@ const UserProfileFrom = ({ users, onSave }) => {
             <Input
               className="border mb-1 text-gray-400 p-2 w-full rounded-lg bg-gray-100"
               type="text"
-              value={users?.country}
+              value={country}
               onChange={(e) => setCountry(e.target.value)}
               placeholder="Country"
             />
@@ -127,7 +127,7 @@ const UserProfileFrom = ({ users, onSave }) => {
                 type="checkbox"
                 className=""
                 value={"1"}
-                defaultChecked={users?.admin}
+                defaultChecked={isAdmin}
                 onClick={(e) => setIsAdmin(e.target.checked)}
               />
               <span>Admin</span>

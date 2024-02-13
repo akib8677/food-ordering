@@ -3,27 +3,14 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
-import { useNotificationContext } from "@/components/sheared/Notificition";
 import UserTabs from "@/components/UserTabs";
 import UserProfileFrom from "@/components/sheared/Form/UserProfileFrom";
+import Loader from "@/components/sheared/Loader";
+import useProfile from "@/components/customHook/use-profile";
 
 const ProfilePage = () => {
   const session = useSession();
-  const [users, setUsers] = useState(null);
-  const notifier = useNotificationContext();
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [profileFeched, setProfileFeched] = useState(false);
-
-  useEffect(() => {
-    getUserProfileData()
-  },[])
-
-  const getUserProfileData = async () => {
-    const response = await fetch('api/profile')
-    const data = await response.json()
-    setUsers(data)
-    setIsAdmin(data.admin)
-  }
+  const { isLoading, data:users } = useProfile();
 
   const updateUserName = async (e, data) => {
     e.preventDefault();
@@ -41,27 +28,18 @@ const ProfilePage = () => {
       success: "Profile saved!",
       error: "Error",
     });
-
-    // if (response.ok) {
-    //   notifier.success({title:'Profile Saved!'})
-    // }
   };
 
-  if (session.status === "loading") {
-    return <span className="text-center">Loading...</span>;
-  }
-
-  if (session.status === "unauthenticated") {
+  if (isLoading) {
+    return <Loader />;
+  } else if (session.status === "unauthenticated") {
     return redirect("/login");
   }
 
   return (
     <div className="">
-      <UserTabs isAdmin={isAdmin} />
-      <UserProfileFrom
-        users={users}
-        onSave={updateUserName}
-      />
+      <UserTabs isAdmin={users.admin} />
+      <UserProfileFrom users={users} onSave={updateUserName} />
     </div>
   );
 };
