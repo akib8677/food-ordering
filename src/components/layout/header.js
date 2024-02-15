@@ -1,6 +1,7 @@
 "use client";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { IoCartOutline } from "react-icons/io5";
 import { CartContext } from "../AppContext";
 import { useContext } from 'react';
 
@@ -47,7 +48,10 @@ const Header = () => {
             </Link>
           </>
         )}
-        <Link href={'/cart'}>Cart({cartProducts.length})</Link>
+      <Link href={'/cart'} className="relative">
+        <IoCartOutline size={35} />
+        <span className="absolute px-2 py-1 text-sm bg-primary text-white rounded-full -top-4 -right-4">{cartProducts.length}</span>
+      </Link>
       </nav>
     </header>
   );
